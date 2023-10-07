@@ -1,0 +1,49 @@
+//7.Даны n натуральных чисел. Найти сумму и произведение элементов, кратных 3 и 5. 
+#include <stdio.h>
+long int proizv = 1;
+long int sum = 0;
+int k = 0;
+int main()
+{
+	int a, n;
+	printf("Vvedite kol - vo naturalnih chisel : = ");
+	scanf_s("%d", &n);
+	if ((n > 0) && (proizv <= 1) && (sum >= 0))
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			printf("Vvedite chislo = ");
+			scanf_s("%d", &a);
+			if (a > 0)
+			{
+				if ((a % 5 == 0) && (a % 3 == 0))
+				{
+					proizv = proizv * a;
+					sum = sum + a;
+					k = k + 1;
+				}
+				else
+					k = 0;
+			}
+			else
+			{
+				printf("Nenaturalnoe chislo");
+				return 0;
+			}
+		}
+	}
+	else
+	{
+		printf("Error");
+		return 0;
+	}
+	if (k = 0)
+	{
+		printf("Net nuzhnih chisel");
+		return 0;
+	}
+	else
+		printf("Proizvedenie: %d ", proizv);
+	printf("Summa: %d ", sum);
+
+};
