@@ -1,0 +1,28 @@
+//17.	Дано натуральное число n. Вычислить P=(1+x)/n+(2+x)/(n-1)+...+(n+x)/1.
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+int main()
+
+{
+	setlocale(LC_ALL, "Rus");
+	long int n, x;
+	double p = 0;
+	printf("Введите натуральное число: ");
+	scanf_s("%d", &n);
+	if ((n > 0))
+	{
+		printf("Введите Х = ");
+		scanf_s("%d", &x);
+		for (int i = 1; i <= n; i++)
+		{
+			p = (((((1 + x) / n) + (n + x)) / 2) * n);
+		}
+	}
+	else
+	{
+		printf("Error");
+		return 0;
+	}
+	printf("P=: %6.3lf ", p);
+};
