@@ -1,3 +1,4 @@
+//Вывести все элементы, которые встречаются больше трех раз
 #define N 100
 #include <stdio.h>
 #include <locale.h>
