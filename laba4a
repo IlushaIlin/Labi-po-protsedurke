@@ -1,0 +1,33 @@
+//Определить среднюю длину непрерывных участков положительных чисел
+#define N 200
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main(void) {
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int array[N];
+	int skl = 0;//cчетчик цепочек
+	int plus = 0;//счетчик положительных
+	int sum = 0;//средняя длина
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = rand() % 21 - 10;
+		printf("%d ", array[i]);
+	}
+	for (int i = 0; i < N; i++)
+	{
+		if (array[i] > 0)
+			plus = plus + 1;
+		else if (plus > 0)
+		{
+			sum = (sum * skl + plus) / (skl + 1);
+			skl = skl + 1;
+		}
+	}
+
+	printf("Ответ: %d", sum);
+	return 0;
+}
