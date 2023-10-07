@@ -1,1 +1,35 @@
 //Подсчитать количество элементов, больших, чем среднее геометрическое в массиве
+#define N 5
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
+int main(void)
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int array[N];
+	int s1 = 0;//cчетчик 
+	double sgm = 1;
+	printf("Полученный массив: ");
+	for (int i = 0; i < N; i++)
+	{
+		array[i] = rand() % 201 + 1;
+		printf("%d ", array[i]);
+	}
+	for (int i = 0; i < N; i++)
+			sgm = sgm * array[i];
+
+        sgm = pow(sgm, 1.0 / N);
+		printf("\n Cреднее геометрическое: %6.3lf", sgm);
+
+		for (int i = 0; i < N; i++)
+		{
+		 if (array[i] > sgm)
+		 s1 = s1 + 1;
+		}
+		if (s1 > 0)
+		printf("\n Кол-во элементов, больших, чем среднее геометрическое в массиве: %d", s1);
+	return 0;
+}
