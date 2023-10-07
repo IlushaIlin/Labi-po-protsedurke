@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <math.h>
+#include <locale.h>
+int main(void) {
+	setlocale(LC_ALL, "Rus");
+	double a, b, z, m;
+	printf("Введите координату a >");
+	scanf_s("%lf", &a);
+	printf("Введите координату b >");
+	scanf_s("%lf", &b);
+	if (a > b)
+		z = sin(pow(a, 2) + b);
+	else if (a <= b)
+		z = log(a - b);
+
+	if (z > a)
+		m = (pow(z, 2) + a - b) / (z - b);
+	else if (z = a)
+		m = tan(z + b)*cos(z - b);
+	else if (z < a)
+		m = pow((a + b)*sin(z), 1/3);
+	printf("a=%6.3lf; b=%6.3lf\n; z=%6.3lf\n; m=%6.3lf\n", a, b, z, m);
+	return 0;
+}
