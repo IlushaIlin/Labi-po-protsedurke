@@ -1,3 +1,45 @@
 //Найти максимальный элемент в каждой строке матрицы и заменить его числом 1.Вывести на экран исходную и полученную
 матрицы.
 
+#define N 4
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
+int main(void)
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int array[N][N];
+	int max = 2;
+	printf("Полученный массив: ");
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			array[i][j] = rand() % 25 + 2;
+			printf("\n[%d][%d]=%d ", i, j, array[i][j]);
+		}
+	}
+	printf("\nПреобразованный массив: ");
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (array[i][j] > array[i][max])
+			{
+				max = j;					
+			}	
+		}
+		array[i][max] = 1;
+	}
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			printf("\n[%d][%d]=%d ", i, j, array[i][j]);
+		}
+	}
+	return 0;
+}
