@@ -1,3 +1,83 @@
 //Найти сумму элементов правой верхней четверти и из левой нижней четверти.Определить значения и местоположение максимального элемента из правой
 верхней четверти матрицы и минимального элемента из левой нижнейчетверти. Сформировать новую матрицупутем прибавления полученной суммы к
 каждому элементу исходной матрицы.Вывести на экран первоначальную матрицу и преобразованную матрицу.
+
+#define N 4//строчки
+#define M 5//cтолбцы
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
+int main(void)
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	int array[N][M];
+	int sum1 = 0;
+	int sum2 = 0;
+	int sum3 = 0;
+	int max = -10;
+	int min = 10;
+	printf("Полученный массив: ");
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			array[i][j] = rand() % 21 - 10;
+			printf("\n[%d][%d]=%d ", i, j, array[i][j]);
+		}
+	}
+    //правая верхняя четверть
+	for (int i = 0; i < N / 2; i++)
+	{
+		for (int j = 2; j < M; j++)
+		{
+			sum1 += array[i][j];
+		}
+	}
+	
+	//левая нижняя четверть
+	for (int i = 2; i < N; i++)
+	{
+		for (int j = 0; j < M / 2; j++)
+		{
+			sum2 += array[i][j];
+		}
+	}
+	sum3 = sum1 + sum2;
+	printf("\n Cуммa элементов правой верхней четверти и из левой нижней четверти : %d", sum3);
+	//поиск максимального элемента правой верхней четверти и левой нижней четверти
+	for (int i = 0; i < N / 2; i++)
+	{
+		for (int j = 2; j < M; j++)
+		{
+			if (array[i][j] > max)
+			{
+				max = array[i][j];
+			}
+			
+		}
+	}
+	for (int i = 2; i < N; i++)
+	{
+		for (int j = 0; j < M / 2; j++)
+		{
+			if (array[i][j] < min)
+			{
+				min = array[i][j];
+			}
+		}
+	}
+	printf("\nMax = %d \nMin = %d", max, min);
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			array[i][j] = array[i][j] + sum3;
+			printf("\n[%d][%d]=%d ", i, j, array[i][j]);
+		}
+	}
+
+	return 0;
+}
