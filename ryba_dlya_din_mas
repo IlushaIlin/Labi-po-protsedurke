@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <locale.h>
+#include <math.h>
+int main()
+{
+    int* a;// указатель на массив
+    int* Cr;
+    int i;
+    int size;
+    setlocale(LC_ALL, "Rus");
+    srand(time(NULL));
+    size = rand() % 10 + 2;
+    printf("size=%d\n", size);
+    // Выделение памяти
+    a = (int*)malloc(size * sizeof(int));
+    // Ввод элементов массива
+    printf("Начальный массив:\n");
+    for (Cr = a; Cr < size + a; Cr++)
+    {
+        *Cr = rand() % 10 - 5;
+        printf("%3d ", *Cr);
+      
+    }
+    // Вывод элементов массива
+    printf("\nМассив-результат:\n");
+    for (Cr = a; Cr < a + size; printf("%3d ", *Cr++));
+    putchar('\n');
+    /* освобождение памяти */
+    free(a);
+    return 0;
+}
